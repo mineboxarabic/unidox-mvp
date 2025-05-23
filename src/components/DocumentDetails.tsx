@@ -1,6 +1,6 @@
 // components/DocumentDetails.tsx
 import React from 'react';
-import { formatDocumentInfo } from '../utils/documentProcessor.tsx';
+import { formatDocumentInfo, type ExtractedInfo } from '../utils/documentProcessor.tsx';
 export interface Document {
     id: number;
     name: string;
@@ -24,7 +24,7 @@ const DocumentDetails: React.FC<DocumentDetailsProps> = ({ document, onClose }) 
     }
 
     // Format the extracted information for display
-    const formattedInfo = document.extractedInfo ? formatDocumentInfo(document.extractedInfo) : {};
+    const formattedInfo = document.extractedInfo ? formatDocumentInfo(document.extractedInfo as ExtractedInfo) : {};
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

@@ -10,7 +10,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ procedures, accessRequests, documentsCount }) => {
     return (
-        <div className="w-64 bg-white p-4 border-r border-gray-200">
+        <div className="w-64 bg-white p-4 border-r border-gray-200 h-screen flex flex-col fixed left-0 top-0 overflow-y-auto">
             <div className="text-2xl font-bold mb-8">Logo</div>
 
             <nav className="space-y-1">

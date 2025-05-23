@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ searchQuery, setSearchQuery, userName }) => {
     return (
-        <header className="bg-white p-4 border-b border-gray-200 flex items-center justify-between">
+        <header className="bg-white p-4 border-b border-gray-200 flex items-center justify-between fixed top-0 right-0 left-64 z-10">
 
             <div className="relative rounded-md shadow-sm w-2/5">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

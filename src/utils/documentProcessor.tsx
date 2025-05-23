@@ -1,7 +1,7 @@
 // unidox-mvp/src/utils/documentProcessor.tsx
 
 import { extractDocumentInfo, extractInfoFromImage } from "../GeminiService.ts";
-import * as pdfjsLib from 'pdfjs-dist/build/pdf';
+import * as pdfjsLib from 'pdfjs-dist';
 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `/pdf.worker.mjs`; // Or your correct path/CDN
@@ -116,7 +116,7 @@ interface GenericDocInfo {
     documentType: string;
 }
 
-type ExtractedInfo = IDCardInfo | PassportInfo | BillInfo | GenericDocInfo;
+export type ExtractedInfo = IDCardInfo | PassportInfo | BillInfo | GenericDocInfo;
 
 interface ProcessedData {
     type: 'image' | 'invoice' | 'payment' | 'generic'; // This 'type' will be based on Gemini's interpretation
@@ -419,7 +419,7 @@ export const formatDocumentInfo = (info: ExtractedInfo): Record<string, string> 
         }
     }
 
-    if (Object.keys(formattedInfo).length === 0 && info.error) {
+    if (Object.keys(formattedInfo).length === 0 && 'error' in info) {
         formattedInfo["Erreur de Traitement"] = String(info.error);
     } else if (Object.keys(formattedInfo).length === 0) {
         formattedInfo["Information"] = "Aucun détail spécifique n'a été extrait de l'image.";
